@@ -8,57 +8,73 @@ public class Lecture {
 		1. Create a variable to hold an int and call it numberOfExercises.
 			Then set it to 26.
 		*/
+		
+		int numberOfExercises = 26;
 
-		//System.out.println(numberOfExercises);
+		System.out.println(numberOfExercises);
 
 		/*
 		2. Create a variable to hold a double and call it half.
 			Set it to 0.5.
 		*/
+		
+		double half = 0.5;
 
-		//System.out.println(half);
+		System.out.println(half);
 
 		/*
 		3. Create a variable to hold a String and call it name.
 			Set it to "TechElevator".
 		*/
+		String name = "TechElevator";
 
-		//System.out.println(name);
+		System.out.println(name);
 
 		/*
 		4. Create a variable called seasonsOfFirefly and set it to 1.
 		*/
+		int seasonsOfFirefly = 1;
+	
 
-		//System.out.println(seasonsOfFirefly);
+		System.out.println(seasonsOfFirefly);
 
 		/*
 		5. Create a variable called myFavoriteLanguage and set it to "Java".
 		*/
+		String myFavoriteLanguage = "Java";
 
-		//System.out.println(myFavoriteLanguage);
+		System.out.println(myFavoriteLanguage);
 
 		/*
 		6. Create a variable called pi and set it to 3.1416.
 		*/
+		float pi = 3.1416f;
 
-		//System.out.println(pi);
+		System.out.println(pi);
 
 		/*
 		7. Create and set a variable that holds your name.
 		*/
+		String myName = "Steven Markel";
 
 		/*
 		8. Create and set a variable that holds the number of buttons on your mouse.
 		*/
+		int buttonsOnMouse = 0;
 
 		/*
 		9. Create and set a variable that holds the percentage of battery left on
 		your phone.
 		*/
+		float batteryLifeLeft = 0.85f;
 
 		/*
 		10. Create an int variable that holds the difference between 121 and 27.
 		*/
+		int differenceBetween = 121 - 27;
+		
+		System.out.println(differenceBetween);
+		
 
 		/*
 		11. Create a double that holds the addition of 12.3 and 32.1.
