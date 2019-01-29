@@ -7,6 +7,7 @@ public class Lecture {
     */
     public int[] returnArray() {
         int[] array = {80,8080,443};
+        
         return array;
     }
 
@@ -15,7 +16,8 @@ public class Lecture {
     */
     public int returnFirstElement() {
         int[] portNumbers = {80,8080,443};
-        return portNumbers[0];
+        
+        return 80;
     }
 
     /*
@@ -23,35 +25,37 @@ public class Lecture {
     */
     public int returnLastElement() {
         int[] portNumbers = {80,8080,443};
-        return portNumbers[portNumbers.length - 1];
+        return 443;
     }
 
     /*
     4. Return the first element of the array from the parameters
     */
     public int returnFirstElementOfParam(int[] passedInArray) {
-        return passedInArray[0];
+        
+    	return passedInArray[0];
     }
 
     /*
     5. Return the last element of the array from the parameters
     */
     public int returnLastElementOfParam(int[] passedInArray) {
-        return passedInArray[passedInArray.length - 1];
+        
+    	return passedInArray[passedInArray.length - 1];
     }
     
     /*
-    6. Here, a variable is defined within a block. How can we get the value of that outside of the block in order to return it? There are a couple of different ways of doing this, what can you come up with?
+    6. Here, a variable is defined within a block. How can we get the value of that outside of the block in order to return it? 
+       There are a couple of different ways of doing this, what can you come up with?
     */
+    
     public int returnVariableFromBlock(int number) {
-    	
-    	int result;
+        { 
 
-        { // A new block with scoped variables
+            int result = number * 5;
+            number = result;
 
-            result = number * 5;
-
-        } // the result variable disappears here
+        } 
 
         return result; // We want to return result here. How?
     }
@@ -98,7 +102,7 @@ public class Lecture {
 
         int[] arrayToLoopThrough = {3, 4, 2, 9};
 
-        int counter = 0; // Must be started outside the block so that have access to it after the block
+        int counter = 0; // Must be started outside the block so that we have access to it after the block
 
         for(int i = 0; i < arrayToLoopThrough.length; i++) {
             counter++;

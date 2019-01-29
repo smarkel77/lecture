@@ -6,8 +6,8 @@ import java.util.List;
 public class Auction {
 
 	private String itemForSale;
-	private Bid currentHighBid;
 	private List<Bid> allBids;
+	private Bid currentHighBid;
 
 	public Auction(String itemForSale) {
 		this.itemForSale = itemForSale;
@@ -36,4 +36,5 @@ public class Auction {
 	public String getItemForSale() {
 		return itemForSale;
 	}
+	
 }
