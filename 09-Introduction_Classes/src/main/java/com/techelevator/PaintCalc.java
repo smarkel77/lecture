@@ -1,11 +1,18 @@
 package com.techelevator;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class PaintCalc {
 
 	public static void main(String[] args) {
+		
 		Scanner scan = new Scanner(System.in);
+		
+		List<Wall> listOfWalls = new ArrayList<Wall>();		
 		
 		while(true) {
 			
@@ -26,15 +33,20 @@ public class PaintCalc {
 				int area = height * width;
 				System.out.println("Added "+height+"x"+width+" wall - "+area+" square feet");
 				
+				Wall temporaryWall = new Wall(width, height);
+				
+				temporaryWall.setWidth(10);
+				
+				listOfWalls.add(temporaryWall);
+				
 			} else if(userChoice.equals("2")) {
 				
 				// Here we need to sum up the areas of all walls that have been entered
-				System.out.println("Wall 1: 10x15 - 150 square feet"); // PROTOTYPE ONLY!!!
-				System.out.println("Wall 2: 10x15 - 150 square feet"); // PROTOTYPE ONLY!!!
-				System.out.println("Wall 3: 10x15 - 150 square feet"); // PROTOTYPE ONLY!!!
-				System.out.println("Wall 4: 10x15 - 150 square feet"); // PROTOTYPE ONLY!!!
-				
-				int totalArea = 600; // PROTOTYPE ONLY!!!
+				int totalArea = 0;
+				for(Wall thisParticularWall : listOfWalls) {
+					totalArea += thisParticularWall.getArea();
+				}
+
 				System.out.println("===============================");
 				System.out.println("Total Area: "+totalArea+" square feet");
 				

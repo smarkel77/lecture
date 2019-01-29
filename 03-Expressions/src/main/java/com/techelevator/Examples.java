@@ -94,11 +94,11 @@ public class Examples {
 		System.out.println();
 		
 		int value = 100;
-		result = (value > 200) | (value < 500);
+		result = (value > 200) || (value < 500);
 		System.out.println("(value > 200) | (value < 500) : " + result);
 
-		result = (value > 200) & (value < 500);
-		System.out.println("(value > 200) & (value < 500) : " + result);
+		result = (value > 200) && (value < 500);
+		System.out.println("(value > 200) && (value < 500) : " + result);
 
 		result = !(value >= 300);
 		System.out.println("!(value >= 300) : " + result);
@@ -110,8 +110,8 @@ public class Examples {
 		
 		int x = 3;
 		int y = 0;
-		// result = (y > 0) & (x / y) > 2;  // causes a divide by zero exception to be thrown
-		result = (y > 0) && (x / y) > 2;
+//		result = (y > 0) & (x / y) > 2;  // causes a divide by zero exception to be thrown
+//		result = (y > 0) && (x / y) > 2;
 		System.out.println(result);
 		
 		System.out.println("*******************************");
@@ -124,25 +124,33 @@ public class Examples {
 		System.out.println("*** Basic if statement ***");
 		
 		int freezingPointFahrenheit = 32;
-		int outsideTempFahrenheit = 80;
-		if(outsideTempFahrenheit <= freezingPointFahrenheit) 
-			System.out.println("Would you like a nice hot cup of coffee?");
-		else 
-			System.out.println("Would you like a cool, refreshing iced mocha?");
+		int outsideTempFahrenheit = 20;
 		
+		if(outsideTempFahrenheit <= freezingPointFahrenheit) {
+			System.out.println("Would you like a nice hot cup of coffee?");
+			System.out.println("This is another thing I have to do.");
+		} else { 
+			System.out.println("Would you like a cool, refreshing iced mocha?");
+		}
+
 		//----------------------------------------------------
 		
 		System.out.println("*** if-else statement ***");
 		
 		boolean condition1 = true;
-		boolean condition2 = true;
-		if(condition1) 
+		boolean condition2 = false;
+
+		if(condition1) {
 			System.out.println("Condition 1 is true!");
-		else if(condition2) 
-			System.out.println("Condition 2 is true!");
-		else
-			System.out.println("No conditions are true!");
+		} 
 		
+		if(condition2) { 
+			System.out.println("Condition 2 is true!");
+		} 
+		
+		if (!(condition1 || condition2)) {
+			System.out.println("No conditions are true!");
+		}
 		//----------------------------------------------------
 		
 		System.out.println("*** a boolean variable is valid boolean expression ***");
@@ -164,7 +172,7 @@ public class Examples {
 			System.out.println("Wear hat");
 			System.out.println("Wear scarf");
 		}
-		
+
 		System.out.println("*******************************");
 		System.out.println("*** VARIABLE SCOPE ***");
 		System.out.println("*******************************");
@@ -176,12 +184,23 @@ public class Examples {
 		}
 		//int thirdVariable = secondVariable * 2; // this will cause a compile error because secondVariable is not "in scope"
 		//int firstVariable = 3;  // this is a compiler error because we already have a variable named firstVariable in this scope
-		int secondVariable = 7; // this is allowed because there is no variable named secondVariable in this scope
+		//int secondVariable = 7; // this is allowed because there is no variable named secondVariable in this scope
 		
-		boolean burnItDown = shouldBurnDownTheBuilding(14, 20);
+		
+		boolean burnItDown = shouldBurnDownTheBuilding(20, 14);	
+		
+		System.out.println(burnItDown);
+		
+		
+		int a = 5;
+		double b = 5.0;
+		
+		if (a == b) {
+			System.out.println("That's cool");
+		}
 	}
 	
-	static boolean shouldBurnDownTheBuilding(int numberOfEmployees, int piecesOfCake) {
+	public static boolean shouldBurnDownTheBuilding(int numberOfEmployees, int piecesOfCake) {
 		if(numberOfEmployees > piecesOfCake) {
 			return true;
 		} else {

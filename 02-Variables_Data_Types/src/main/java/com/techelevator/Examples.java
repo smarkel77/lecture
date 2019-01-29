@@ -50,8 +50,8 @@ public class Examples {
 		System.out.println("last name: "+lastName);
 		System.out.println("full name: "+fullName);
 		
-		int numberOfNETStudents = 8;
-		int numberOfJavaStudents = 14;
+		int numberOfNETStudents = 16;
+		int numberOfJavaStudents = 16;
 		int totalNumberOfStudents = numberOfNETStudents + numberOfJavaStudents;
 		System.out.println("totalNumberOfStudents is equal to: "+totalNumberOfStudents);
 		
@@ -68,11 +68,11 @@ public class Examples {
 		averageCookiesEaten = (float)cookiesEaten / numberOfChildrenEatingCookies; // here we "cast" an int variable to type float so that the result of the arithmetic operation is a float
 		System.out.println("(casting to float) Average Cookies Eaten: "+averageCookiesEaten);
 		
+		
 		double aDouble = 7.89;
 		//int anInteger = aDouble;  // this is a compiler error
 		int anInteger = (int)aDouble;  // this will truncate the fractional part of the double
 		System.out.println(aDouble+" cast to an int is equal to: "+anInteger);
-		
 		
 		// **********************
 		// ARITHMETIC OPERATORS
@@ -94,11 +94,11 @@ public class Examples {
 		
 		remainder = 8 % 4;
 		System.out.println("The remainder of dividing 8 by 4 is "+remainder);
-		
+
 		// ***********************
 		// ESCAPE CHARACTERS
 		// ***********************
-		String emerilQuote = "Emeril said, \"Bam!\"";
+		String emerilQuote = "Emeril said, \"\"Bam!\"\"";
 		System.out.println(emerilQuote);
 		
 		System.out.println("To print \\ I need two backslashes");
@@ -106,6 +106,12 @@ public class Examples {
 		System.out.println("Hello!\n\nGoodbye!");  // The escape character for newline is \n
 		
 		System.out.println("Hello\tGoodbye"); // The escape character for tab is \t
+		
+		
+		System.out.println("EntireLine");
+		System.out.print("Hello there");
+		System.out.println("Final Line");
+		
 	}
 
 }

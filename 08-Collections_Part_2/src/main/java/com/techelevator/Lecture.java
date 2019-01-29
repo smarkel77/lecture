@@ -2,9 +2,10 @@ package com.techelevator;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Lecture {
 
@@ -15,23 +16,25 @@ public class Lecture {
 		System.out.println("####################");
 		System.out.println();
 		
-		Map<String, String> nameToZip = new HashMap<String, String>();  // Map is an interface and HashMap is a class that implements Map
+		Map<Integer, String> nameToZip = new HashMap<String, String>();  // Map is an interface and HashMap is a class that implements Map
 		
 		/* The "put" method is used to add elements to a Map */
-		nameToZip.put("David", "44120");
-		nameToZip.put("Dan", "44124");
-		nameToZip.put("Elizabeth", "44012");
+		nameToZip.put(1, "44120");
+		nameToZip.put(2, "44124");
+		nameToZip.put(3, "44012");
 		
 		/* The "get" method is used to retrieve elements from a Map */
-		System.out.println("David lives in "+nameToZip.get("David"));
-		System.out.println("Dan lives in "+nameToZip.get("Dan"));
-		System.out.println("Elizabeth lives in "+nameToZip.get("Elizabeth"));
+		System.out.println("David lives in "+nameToZip.get(1));
+		System.out.println("Dan lives in "+nameToZip.get(2));
+		System.out.println("Elizabeth lives in "+nameToZip.get(3));
 		System.out.println();
-		
+
 		System.out.println("We can also retrieve a Set of keys and iterate over them using a for loop:");
 		Set<String> keys = nameToZip.keySet();		// returns a Set of all of the keys in the Map
-		for(String name : keys) {
-			System.out.println(name+" lives in "+nameToZip.get(name));
+		
+		for(String key : keys) {
+			String value = nameToZip.get(key);
+			System.out.println(key + " lives in " + value );
 			
 		}
 		System.out.println();
@@ -42,7 +45,7 @@ public class Lecture {
 			System.out.println(name+" lives in "+nameToZip.get(name));
 		}
 		System.out.println();
-		
+
 		nameToZip.remove("David");	
 		System.out.println("removed David\n");
 		for(String name : keys) {
@@ -63,13 +66,13 @@ public class Lecture {
 		System.out.println();
 
 		students.add("Jim");
-		System.out.println("Added Jim");
+		System.out.println("Added Jim" + "\tSize: " + students.size() );
 		students.add("Seth");
-		System.out.println("Added Seth");
+		System.out.println("Added Seth" + "\tSize: " + students.size());
 		students.add("Dan");
-		System.out.println("Added Dan");
+		System.out.println("Added Dan" + "\tSize: " + students.size());
 		students.add("Jim");  // this value will be ignored because it is duplicate
-		System.out.println("Added Jim again");
+		System.out.println("Added Jim again" + "\tSize: " + students.size());
 		System.out.println();
 		
 		System.out.println("####################");
