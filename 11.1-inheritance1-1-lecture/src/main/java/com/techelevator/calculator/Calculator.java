@@ -22,9 +22,9 @@ public class Calculator {
 		result = 0.0;
 	}
 	
-	public static boolean isGreaterThan(BigDecimal bd) {
-		BigInteger zero = BigInteger.ZERO;
-		int answer = bd.compareTo(new BigDecimal(0));
+	public boolean isPositive() {
+		BigDecimal bd = new BigDecimal(this.result);
+		int answer = bd.compareTo(BigDecimal.ZERO);
 		return answer == 1;
 	}
 	

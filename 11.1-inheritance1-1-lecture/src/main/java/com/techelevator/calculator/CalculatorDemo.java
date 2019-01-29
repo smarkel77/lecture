@@ -10,6 +10,8 @@ public class CalculatorDemo {
 		Calculator c = new Calculator(99);
 		c.add(100);
 		System.out.println(c.getResult());
+		System.out.println("Is it positive? --  " + c.isPositive());
+		System.out.println();
 		
 		ProgrammingCalculator pc = new ProgrammingCalculator(555);
 		pc.add(111);
