@@ -18,8 +18,8 @@ public abstract class Game {
 	
 	public final void playGame() {
 		setup(numberOfPlayers);
-		for(int i = 0; !isGameOver(); i = (i+1) % numberOfPlayers) {
-			takeTurn(i+1);
+		for(int i = 1; !isGameOver(); i = (i % numberOfPlayers) + 1) {
+			takeTurn(i);
 		}
 		finishGame();
 	}
