@@ -13,7 +13,7 @@ public class OldMacdonald {
 		Tractor t = new Tractor();
 		singableThings.add(t);
 		
-		Singable[] farmAnimals = new Singable[] { new Cow(), new Chicken(), new Tractor() };
+		Singable[] farmAnimals = new Singable[] { new Cow(), new Chicken(), new Tractor(), new Cat(), new Holstein() };
 		
 		for(Singable farmThing : farmAnimals) {
 			String name = farmThing.getName();
@@ -24,7 +24,6 @@ public class OldMacdonald {
 			System.out.println("With a "+sound+" "+sound+" here");
 			System.out.println("And a "+sound+" "+sound+" there");
 			System.out.println("Here a "+sound+" there a "+sound+" everywhere a "+sound+" "+sound);
-			
 			System.out.println();
 		}
 	}
