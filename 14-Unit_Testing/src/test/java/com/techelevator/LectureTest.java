@@ -1,8 +1,10 @@
 package com.techelevator;
 
 import org.junit.After;  // The @After annotation is used to execute a method after every test
+import org.junit.AfterClass;
 import org.junit.Assert; // The Assert class has static assertion methods for validating test results
 import org.junit.Before; // The @Before annotation is used to execute a method before every test
+import org.junit.BeforeClass;
 import org.junit.Test;   // The @Test annotation is used to label methods that should be run as tests
 
 /* Like all other Java code, unit testing code is defined within a class. 
@@ -33,6 +35,20 @@ public class LectureTest {
 		System.out.println("teardown");
 	}
 		
+	/*
+	@BeforeClass
+	public void first() {
+		System.out.println("I run once, and I'm always first");
+	}
+	
+	@AfterClass
+	public void last() {
+		System.out.println("I run once, and I'm always last");
+	}
+	*/
+	
+	
+	
 	/* Each test is implemented as a method with the @Test annotation. When the JUnit
 	 * framework is invoked, it looks for these @Test annotations on the test class
 	 * and runs such methods as tests.
@@ -63,7 +79,7 @@ public class LectureTest {
 		
 		String theString = "Java";         // Arrange
 		int length = theString.length();   // Act
-		Assert.assertEquals(4, length);    // Assert
+		Assert.assertEquals("This error message will display if this line fails!", 4, length);    // Assert
 	}
 	
 	@Test
@@ -82,7 +98,11 @@ public class LectureTest {
 		 * This is particularly helpful with assertTrue as otherwise the failure output would simply
 		 * state "Expected: true Actual: false", which sometimes isn't much help in figuring out 
 		 * what went wrong */
-		Assert.assertTrue("String did not start with Hello as expected.", startsWithHello);   // Assert
+		Assert.assertTrue(startsWithHello);
+		Assert.assertEquals(true, startsWithHello);
+		
+		
+		Assert.assertTrue("String did not start with Hello as expected -- " + startsWithHello, startsWithHello);   // Assert
 	}
 	
 	@Test
@@ -91,10 +111,48 @@ public class LectureTest {
 		
 		/* The fail method will cause a test to fail */
 		
-		Assert.fail("This is how I can force a test to fail");
+		System.out.println(this_is_my_helper_method());
+		
+		//Assert.fail("This is how I can force a test to fail");
 	}
 	
+	@Test
+	public void this_increases_coverage() {
+		int input = 6;
+		Lecture objectToTest = new Lecture();
+		
+		int output = objectToTest.uncovered(input); // Act
+		
+		Assert.assertEquals(8, output);
+	}
+	
+	@Test
+	public void test_squareIt_returns_a_positive_when_given_a_negative() {
+		int input = -4; // Arrange -- test input int
+        Lecture lectureToTest = new Lecture(); // Arrange -- test object
+		
+        int output = lectureToTest.squareIt(input); // Act
+
+        Assert.assertEquals(16, output); // Assert
+		
+	}
+	
+	
+	@Test
+	public void doesnt_do_anything() {
+		
+	}
+	
+	
+	
+	
 	public void this_method_is_not_a_test_because_it_does_not_have_the_Test_annotation() {
+		System.out.println("This won't display");
 		// This method will not be run by Junit, because it's not a test
 	}
+	
+	private String this_is_my_helper_method() {
+		return "Ran the helper method!";
+	}
+	
 }
