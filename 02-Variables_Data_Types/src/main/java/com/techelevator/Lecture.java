@@ -30,7 +30,7 @@ public class Lecture {
 		*/
 		String name = "TechElevator";
 
-		String name = "Tech Elevator";
+		//String name = "Tech Elevator";
 		
 		System.out.println(name);
 
@@ -40,7 +40,7 @@ public class Lecture {
 		int seasonsOfFirefly = 1;
 	
 
-		byte seasonsOfFirefly = 1;
+		//byte seasonsOfFirefly = 1;
 		System.out.println(seasonsOfFirefly);
 
 		/*
@@ -48,7 +48,7 @@ public class Lecture {
 		*/
 		String myFavoriteLanguage = "Java";
 
-		String myFavoriteLanguage = "Java";
+		//String myFavoriteLanguage = "Java";
 		System.out.println(myFavoriteLanguage);
 
 		/*
