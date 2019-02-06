@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -10,7 +11,7 @@ public class Lecture {
 	public static void main(String[] args) throws IOException {
 		
 		Scanner userInput = new Scanner(System.in);
-		
+
 		/* 
 		 * The java.io.File class is a representation of file and directory path names.  It provides methods to inspect and 
 		 * modify file system objects.
@@ -45,7 +46,7 @@ public class Lecture {
 		} else {
 			System.out.println(f.getAbsolutePath()+" does not exist.");
 		}
-		
+
 		/* 
 		 * The File class also allows us to manipulate file system objects 
 		 * */
@@ -71,7 +72,7 @@ public class Lecture {
 				System.exit(1);
 			}
 		}
-		 
+
 		/* ************************
 		 * CREATING A FILE 
 		 * ************************/
@@ -87,7 +88,7 @@ public class Lecture {
 		System.out.println("name: "+newFile.getName());
 		System.out.println("absolutePath: "+newFile.getAbsolutePath());
 		System.out.println("size : "+newFile.length());
-		
+
 		 
 		/* ************************
 		 * WRITING TO A FILE 
@@ -107,6 +108,16 @@ public class Lecture {
 		System.out.println("absolutePath: "+newFile.getAbsolutePath());
 		System.out.println("size : "+newFile.length());
 		
+
+		// Open file to be appended to:
+		FileWriter fw = new FileWriter("new_file.txt", true);
+		PrintWriter appendWriter = new PrintWriter(fw);
+		appendWriter.println("Add this to the bottom");
+		
+		appendWriter.flush();
+		appendWriter.close();
+		
+		userInput.close();
 	}
 
 }
