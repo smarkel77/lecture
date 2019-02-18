@@ -93,6 +93,8 @@ public class JDBCExample {
 	
 		/* The execute method is used for INSERT and UPDATE statements */
 		insertActorStmt.executeUpdate();
+
+
 		
 		PreparedStatement findActorByNameStmt = conn.prepareStatement("SELECT * FROM actor WHERE first_name = ? AND last_name = ?");
 		findActorByNameStmt.setString(1, actorFirstName);
