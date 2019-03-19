@@ -25,6 +25,12 @@ function printToConsole(value) {
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
  */
+function multiplyTogether(firstParameter, secondParameter) {
+  return firstParameter * secondParameter;
+}
+
+
+
 
 /**
  * This version makes sure that no parameters are ever missing. If
@@ -35,6 +41,12 @@ function printToConsole(value) {
  * @param {number} [firstParameter=0] the first parameter to multiply
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
+function multiplyNoUndefined(firstParameter=0, secondParameter=0) {
+  return firstParameter * secondParameter;
+}
+
+
+
 
 /**
  * Scope is defined as where a variable is available to be used.
@@ -71,8 +83,12 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @param {number[]} numbersToSum numbers to add up
  * @returns {number} sum of all the numbers
  */
-function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+function sumAllNumbers(numbersToSum = []) {
+  return numbersToSum.reduce(
+    function(runningTotal, nextNumber) {
+      return runningTotal + nextNumber;
+    }, 0
+  );
 }
 
 /**
@@ -83,4 +99,11 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThree(numbersToFilter = []) {
+
+  return numbersToFilter.filter(
+    function(input) {
+      return input % 3 == 0;
+    }
+  );
+}
