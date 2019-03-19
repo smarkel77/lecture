@@ -39,7 +39,7 @@ public class PaymentCalculatorController {
 	 *
 	 * All controller request handling methods should return a String
 	 * that represents the "logical view name" */
-	@RequestMapping("/mortgageCalculatorInput")
+	
 	public String showMortgagePaymentCalculatorInputPage() {
 
 		/* Controller methods can return a variety of types of values,
