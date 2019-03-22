@@ -17,7 +17,7 @@ let reviews = [
  */
 function setPageTitle() {
   const pageTitle = document.getElementById('page-title');
-  pageTitle.querySelector('.name').innerHTML = name;
+  pageTitle.querySelector('.name').innerHTML = "<i>" + name + "</i>";
 }
 
 /**
@@ -60,25 +60,54 @@ function displayReview(review) {
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
 
-// set the product reviews page title
-setPageTitle();
-// set the product reviews page description
-setPageDescription();
-// display all of the product reviews on our page
-displayReviews();
+document.addEventListener("DOMContentLoaded", () => {
+  // set the product reviews page title
+  setPageTitle();
+  // set the product reviews page description
+  setPageDescription();
+  // display all of the product reviews on our page
+  displayReviews();
 
+  let inputDesc = document.getElementById("inputDesc");
+  inputDesc.addEventListener("keyup", function(event) {
+    if(event.key === "Enter") {
+      exitDescriptionEdit(event.target, true);
+    }
+  });
+  
+  inputDesc.addEventListener("mouseleave", (event) => {
+    exitDescriptionEdit(event.target, false);
+  });  
+
+  let addReviewButton = document.getElementById("btnToggleForm");
+  addReviewButton.addEventListener("click", showHideForm);
+
+  let saveButton = document.getElementById("btnSaveReview");
+  saveButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    saveReview();
+  });
+
+
+});
 /**
- * Take an event on the description and swap out the description for a text box.
+ * Take an event on the description and swap out the description 
+ * for a text box.
  *
  * @param {Event} event the event object
  */
 function toggleDescriptionEdit(desc) {
   const textBox = desc.nextElementSibling;
-  textBox.value = description;
+  textBox.value = desc.innerText;
   textBox.classList.remove('d-none');
   desc.classList.add('d-none');
   textBox.focus();
 }
+
+let descriptionField = document.getElementsByClassName("description")[0];
+descriptionField.addEventListener('click', (event) => {
+  toggleDescriptionEdit(event.target);
+});
 
 /**
  * Take an event on the text box and set the description to the contents
@@ -95,6 +124,7 @@ function exitDescriptionEdit(textBox, save) {
   textBox.classList.add('d-none');
   desc.classList.remove('d-none');
 }
+
 
 /**
  * I will show / hide the add review form
@@ -130,4 +160,21 @@ function resetFormValues() {
 /**
  * I will save the review that was added using the add review from
  */
-function saveReview() {}
+function saveReview() {
+  let name = document.getElementById("name");
+  let title = document.getElementById("title");
+  let rating = document.getElementById("rating");
+  let review = document.getElementById("review");
+
+  let myReview = {
+    reviewer: name.value,
+    title: title.value,
+    review: review.value,
+    rating: rating.value
+  }
+
+  reviews.push(myReview);
+  displayReview(myReview);
+  resetFormValues();
+  showHideForm();
+}
