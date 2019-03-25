@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- <link rel="icon" href="<%= BASE_URL %>favicon.ico"> -->
+    <title>product-reviews</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/data/main.css">
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but product-reviews doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+    <div class="product" >
+        <div class="product-image">
+          <img src="./assets/img/te_yeti.png" alt="Tech Elevator Yeti" class="product-image">
+        </div>
+        <div class="product-info">
+          <h1>TECH ELEVATOR YETI</h1>
+          <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class="product-reviews">
+            <div class="header">
+                <h2>Reviews </h2>
+                <a href="#" class="add-review">
+                  <i class="far fa-address-card"></i> Add Review
+                </a>
+            </div>
+            <div id="review-container"></div>
+        </div>
+
+        <div class="save-review d-none">
+            <div class="header">
+            <h2></h2>
+            <a href="#" class="back" onclick="returnToReviews(event);">
+                <i class="fas fa-list-ul"></i> Return to Reviews
+            </a>
+            </div>
+            <div class="form">
+            <input type="hidden" value="0" id="formReviewID">
+            <div class="form-input">
+                <span class="label">Full Name:</span> <input type="text" id="formName" placeholder="Enter Full Name">
+            </div>
+            <div class="form-input">
+                <span class="label">Title:</span> <input type="text" id="formTitle" placeholder="Enter Review Title">
+            </div>
+            <div class="form-input">
+                <span class="label">Review:</span>
+                <textarea name="review" id="review" cols="60" rows="10" ></textarea>
+            </div>
+            <button onclick="saveReview(event)">Save Review</button>
+            </div>
+        </div>
+
+      </div>
+    </div>
+
+    <template id="review-template">
+          <div class="review" >
+            <div class="review-left">
+              <img class="avatar"/>
+              <div class="review-actions">
+                <a href="#" class="edit-review">
+                  <i class="far fa-edit"></i> Edit 
+                </a>
+                <a href="#" class="delete-review">
+                  <i class="far fa-trash-alt"></i> Delete 
+                </a>
+              </div>
+            </div>
+            <div class="review-info">
+              <h2>{{review.title}}</h2>
+              <span>{{review.name}} | {{formatDate(review.createdAt)}}</span>
+              <p class="feedback">{{review.review}}</p>
+            </div>
+          </div>
+      </template>
+      <script src="assets/js/main.js"></script>
+  </body>
+
+</html>
