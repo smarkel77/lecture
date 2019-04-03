@@ -5,38 +5,38 @@
         <p class="description">{{ description }}</p>
 
         <div class="well-display">
-            <div class="well">
+            <div class="well" v-on:mouseover="filter = 0">
                 <span class="amount">{{ averageRating }}</span>
                 Average Rating
             </div>
 
-            <div class="well">
-                <span class="amount">{{ numberOfOneStarReviews }}</span>
+            <div class="well" v-on:mouseover="filter = 1">
+                <span class="amount" v-on:click="filter = 1">{{ numberOfOneStarReviews }}</span>
                 1 Star Review{{ numberOfOneStarReviews === 1 ? '' : 's' }}
             </div>
 
-            <div class="well">
+            <div class="well" v-on:mouseover="filter = 2">
                 <span class="amount">{{ numberOfTwoStarReviews }}</span>
                 2 Star Review{{ numberOfTwoStarReviews === 1 ? '' : 's' }}
             </div>
 
-            <div class="well">
+            <div class="well" v-on:mouseover="filter = 3">
                 <span class="amount">{{ numberOfThreeStarReviews }}</span>
                 3 Star Review{{ numberOfThreeStarReviews === 1 ? '' : 's' }}
             </div>
 
-            <div class="well">
+            <div class="well" v-on:mouseover="filter = 4">
                 <span class="amount">{{ numberOfFourStarReviews }}</span>
                 4 Star Review{{ numberOfFourStarReviews === 1 ? '' : 's' }}
             </div>
 
-            <div class="well">
+            <div class="well" v-on:mouseover="filter = 5">
                 <span class="amount">{{ numberOfFiveStarReviews }}</span>
                 5 Star Review{{ numberOfFiveStarReviews === 1 ? '' : 's' }}
             </div>
         </div>
 
-        <a href="#" v-on:click.prevent="showForm = true" v-if="showForm === false">Show Form</a>
+        <a href="#" v-on:click.prevent="showForm = true" v-show="showForm === false">Show Form</a>
 
         <form v-if="showForm === true" v-on:submit.prevent="addNewReview">
             <div class="form-element">
@@ -62,7 +62,7 @@
             <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
         </form>
 
-        <div class="review" v-for="review in reviews" v-bind:key="review.id">
+        <div class="review" v-for="review in filterReviews" v-bind:key="review.id">
             <h4>{{ review.reviewer }}</h4>
             <div class="rating">
                 <img src="../assets/star.png" v-bind:title="review.rating + ' Star Review'" class="ratingStar" v-for="n in review.rating" />
@@ -70,7 +70,9 @@
             <h3>{{ review.title }}</h3>
 
             <p>{{ review.review }}</p>
+
         </div>
+            <p v-if="filterReviews.length == 0">No reviews</p>
     </div>
 </template>
 
@@ -79,9 +81,10 @@ export default {
     name: "product-review",
     data() {
         return {
-            name: 'Cigar Parties for Dummies',
-            description: 'Host and plan the perfect cigar party for all of your squirrelly friends.',
+            name: 'Vodka Parties for Dummies',
+            description: 'Host and plan the perfect vodka party for all of your communist friends.',
             showForm: false,
+            filter: 0,
             newReview: {},
             reviews: [
                 {
@@ -133,6 +136,11 @@ export default {
         numberOfFiveStarReviews(vm) {
             return vm.numberOfReviews(vm.reviews, 5);
         },
+        filterReviews(vm){
+            return vm.reviews.filter((review) => {
+                return vm.filter === 0 ? true : vm.filter === review.rating;
+            })
+        }
     },
     methods: {
         numberOfReviews(reviews, starType) {
