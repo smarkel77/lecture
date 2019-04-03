@@ -6,33 +6,33 @@
 
         <div class="well-display">
             <div class="well">
-                <span class="amount">-</span>
+                <span class="amount">{{ averageRating }}</span>
                 Average Rating
             </div>
 
             <div class="well">
-                <span class="amount">-</span>
-                1 Star Review
+                <span class="amount">{{ numberOfOneStarReviews }}</span>
+                1 Star Review{{ numberOfOneStarReviews === 1 ? '' : 's' }}
             </div>
 
             <div class="well">
-                <span class="amount">-</span>
-                2 Star Review
+                <span class="amount">{{ numberOfTwoStarReviews }}</span>
+                2 Star Review{{ numberOfTwoStarReviews === 1 ? '' : 's' }}
             </div>
 
             <div class="well">
-                <span class="amount">-</span>
-                3 Star Review
+                <span class="amount">{{ numberOfThreeStarReviews }}</span>
+                3 Star Review{{ numberOfThreeStarReviews === 1 ? '' : 's' }}
             </div>
 
             <div class="well">
-                <span class="amount">-</span>
-                4 Star Review
+                <span class="amount">{{ numberOfFourStarReviews }}</span>
+                4 Star Review{{ numberOfFourStarReviews === 1 ? '' : 's' }}
             </div>
 
             <div class="well">
-                <span class="amount">-</span>
-                5 Star Review
+                <span class="amount">{{ numberOfFiveStarReviews }}</span>
+                5 Star Review{{ numberOfFiveStarReviews === 1 ? '' : 's' }}
             </div>
         </div>
 
@@ -86,6 +86,36 @@ export default {
                 }
             ]
         };
+    },
+    computed: {
+        averageRating(vm) {
+            let sum = vm.reviews.reduce( (currentSum, review) => {
+                return currentSum + review.rating;
+            }, 0);
+            return sum / vm.reviews.length;
+        },
+        numberOfOneStarReviews(vm) {
+            return vm.numberOfReviews(vm.reviews, 1);
+        },
+        numberOfTwoStarReviews(vm) {
+            return vm.numberOfReviews(vm.reviews, 2);
+        },
+        numberOfThreeStarReviews(vm) {
+            return vm.numberOfReviews(vm.reviews, 3);
+        },
+        numberOfFourStarReviews(vm) {
+            return vm.numberOfReviews(vm.reviews, 4);nu
+        },
+        numberOfFiveStarReviews(vm) {
+            return vm.numberOfReviews(vm.reviews, 5);
+        },
+    },
+    methods: {
+        numberOfReviews(reviews, starType) {
+            return reviews.reduce( (currentCount, review ) => {
+                return currentCount + ( review.rating === starType ? 1 : 0);
+            }, 0);
+        }
     }
 }
 </script>
@@ -145,3 +175,4 @@ export default {
         font-size: 1rem;
     }
 </style>
+
